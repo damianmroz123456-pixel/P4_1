@@ -1,1 +1,4 @@
 Patryk;21
+patryk;21
+damian;20
+krystian;21

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -6,18 +7,46 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Service service = new Service();
 
-        System.out.println("Dodaj studenta:");
-        System.out.print("Imię: ");
-        String imie = scanner.nextLine();
+        while (true) {
+            System.out.println("\n--- MENU ---");
+            System.out.println("1. Dodaj studenta");
+            System.out.println("2. Wyświetl wszystkich studentów");
+            System.out.println("0. Wyjście");
+            System.out.print("Wybór: ");
 
-        System.out.print("Wiek: ");
-        int wiek = Integer.parseInt(scanner.nextLine());
+            String choice = scanner.nextLine();
 
-        Student student = new Student(imie, wiek);
-        service.addStudent(student);
+            if (choice.equals("1")) {
 
-        System.out.println("Student zapisany!");
+                System.out.print("Imię: ");
+                String imie = scanner.nextLine();
+                System.out.print("Wiek: ");
+                int wiek = Integer.parseInt(scanner.nextLine());
+
+                service.addStudent(new Student(imie, wiek));
+                System.out.println("Student zapisany!");
+
+            } else if (choice.equals("2")) {
+
+                List<Student> students = service.getAllStudents();
+                System.out.println("\n--- Lista studentów ---");
+                if (students.isEmpty()) {
+                    System.out.println("Brak studentów w bazie.");
+                } else {
+                    for (Student s : students) {
+                        System.out.println(s);
+                    }
+                }
+
+            } else if (choice.equals("0")) {
+                System.out.println("Koniec programu.");
+                break;
+
+            } else {
+                System.out.println("Niepoprawny wybór!");
+            }
+        }
+
         scanner.close();
     }
-  
 }
