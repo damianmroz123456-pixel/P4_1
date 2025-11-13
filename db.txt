@@ -2,3 +2,4 @@ Patryk;21
 patryk;21
 damian;20
 krystian;21
+damian;mroz;20;elektronika i telekomunikacja
